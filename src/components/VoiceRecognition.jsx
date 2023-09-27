@@ -4,6 +4,7 @@
 // function VoiceRecognition() {
 //   const [listening, setListening] = useState(false);
 //   const [transcript, setTranscript] = useState('');
+//   const expectedText = 'hello are you'; // Replace with your expected text
 
 //   const startListening = () => {
 //     const recognition = new window.SpeechRecognition();
@@ -16,8 +17,9 @@
 
 //     recognition.onresult = (event) => {
 //       const last = event.results.length - 1;
-//       const text = event.results[last][0].transcript;
-//       setTranscript(text);
+//       const spokenText = event.results[last][0].transcript;
+//       setTranscript(spokenText);
+//       checkMatching(spokenText);
 //     };
 
 //     recognition.onend = () => {
@@ -25,6 +27,20 @@
 //     };
 
 //     recognition.start();
+//   };
+
+//   const checkMatching = (spokenText) => {
+//     const isMatch = spokenText.toLowerCase() === expectedText.toLowerCase();
+
+//     if (isMatch) {
+//       // If the spoken text matches the expected text
+//       console.log('True', spokenText);
+//       // You can perform any actions or render specific content here
+//     } else {
+//       // If the spoken text does not match the expected text
+//       console.log('False:', spokenText);
+//       // You can perform different actions or render different content here
+//     }
 //   };
 
 //   useEffect(() => {
@@ -36,8 +52,8 @@
 //   return (
 //     <div>
 //       <Typography variant="h5">Speak in English:</Typography>
-      
-//        <Typography variant='body'>word</Typography>
+//       <Typography variant="body">{expectedText}</Typography>
+//       <Button> Speaker </Button>
 //       <Button
 //         variant="contained"
 //         color={listening ? 'secondary' : 'primary'}
@@ -46,13 +62,12 @@
 //         {listening ? 'Listening...' : 'Start Listening'}
 //       </Button>
 //       <Typography variant="body1">Transcript: {transcript}</Typography>
-//       <Typography>{'Hi how are you' == {transcript}? true:false}</Typography>
+      
 //     </div>
 //   );
 // }
 
 // export default VoiceRecognition;
-
 
 
 
@@ -62,7 +77,7 @@ import { Button, Typography } from '@mui/material';
 function VoiceRecognition() {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const expectedText = 'hello are you'; // Replace with your expected text
+  const expectedText = 'Hi'; // Replace with your expected text
 
   const startListening = () => {
     const recognition = new window.SpeechRecognition();
@@ -101,6 +116,15 @@ function VoiceRecognition() {
     }
   };
 
+  const speakExpectedText = () => {
+    speak(expectedText);
+  };
+
+  const speak = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+  };
+
   useEffect(() => {
     if (listening) {
       startListening();
@@ -111,6 +135,7 @@ function VoiceRecognition() {
     <div>
       <Typography variant="h5">Speak in English:</Typography>
       <Typography variant="body">{expectedText}</Typography>
+      
       <Button
         variant="contained"
         color={listening ? 'secondary' : 'primary'}
@@ -118,10 +143,12 @@ function VoiceRecognition() {
       >
         {listening ? 'Listening...' : 'Start Listening'}
       </Button>
+      <Button onClick={speakExpectedText}>Speaker</Button>
       <Typography variant="body1">Transcript: {transcript}</Typography>
-      {/* <Typography>{spokenText}</Typography> */}
+
     </div>
   );
 }
 
 export default VoiceRecognition;
+
