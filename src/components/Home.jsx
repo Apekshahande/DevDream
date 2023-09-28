@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/system/Unstable_Grid';
 import img from './img/img.png';
+import {  Link } from 'react-router-dom';
 function Home() {
   return (
     <>
@@ -22,7 +23,11 @@ function Home() {
                
               </Box>
              
-              <Button  variant="outlined" sx ={{ mt : 3, mr:61, borderRadius:50,}}> Start</Button>
+              <Button  variant="outlined" sx ={{ mt : 3, mr:61, borderRadius:50,}}> 
+              <Link to="/projects">
+                Start
+              </Link>
+              </Button>
                 
               </Grid>
               

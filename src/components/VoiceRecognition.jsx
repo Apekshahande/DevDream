@@ -73,6 +73,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 function VoiceRecognition() {
   const [listening, setListening] = useState(false);
@@ -131,21 +138,46 @@ function VoiceRecognition() {
   }, [listening]);
 
   return (
-    <div>
-      <Typography variant="h5">Speak in English:</Typography>
-      <Typography variant="body">{expectedText}</Typography>
-      
-      <Button
+     <Card sx={{ maxWidth: 500, textAlign:"center" , mt:20, ml:75,backgroundColor:"rgb(241, 240, 232)"}}>
+      <CardContent>
+        <Typography gutterBottom variant="h4" component="div">
+          Speak Below Word
+        </Typography>
+        <Grid container sx ={{mt:3}} >
+        <Grid item sx={{ml:20,}}>
+          <Typography variant="h4" color="text.secondary">
+            { expectedText} 
+          </Typography>
+        </Grid>
+        <Grid item xs={3} >
+        <Button onClick={speakExpectedText}>
+        {/* <VolumeOffIcon  /> */}
+        <VolumeUpIcon />
+        </Button>
+         
+        </Grid>
+        </Grid>
+        <Button
         variant="contained"
         color={listening ? 'secondary' : 'primary'}
         onClick={() => setListening(!listening)}
+        sx ={{mt :3,height:50,borderRadius:50}}
+        
+        
       >
         {listening ? 'Listening...' : 'Start Listening'}
       </Button>
-      <Button onClick={speakExpectedText}>Speaker</Button>
-      <Typography variant="body1">Transcript: {transcript}</Typography>
+      {/* <Typography variant="body1">Transcript: {transcript}</Typography> */}
+      </CardContent>
+      {/* <CardActions>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions> */}
+    </Card>
+     
+     
 
-    </div>
+  
   );
 }
 

@@ -7,6 +7,9 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import VoiceRecognition from './components/VoiceRecognition';
+import Grammer from './components/Grammer';
+import Translation from './components/Translation';
+
 
 function App() {
   return (
@@ -17,6 +20,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/voice-recognition" element={<VoiceRecognition />} />
+          <Route path="/grammer" element={<Grammer/>} />
+          <Route path="/translation" element={<Translation/>} />
+
+        
         </Routes>
       </div>
     </Router>

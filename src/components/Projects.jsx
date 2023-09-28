@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import {  Link } from 'react-router-dom';
 
 const Projects =() =>{
   return (
@@ -29,7 +30,12 @@ const Projects =() =>{
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                  Share
+                <Link to="/voice-recognition">
+                Share
+
+                </Link>
+                
+                  
                 </Button>
               </CardActions>
             </Card>
@@ -51,7 +57,10 @@ const Projects =() =>{
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                  Share
+                <Link to="/grammer">
+                Share
+                </Link>
+                  
                 </Button>
               </CardActions>
             </Card>
@@ -73,7 +82,10 @@ const Projects =() =>{
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                  Share
+                    <Link to="/translation">
+                        Share
+                    </Link>
+                
                 </Button>
               </CardActions>
             </Card>
