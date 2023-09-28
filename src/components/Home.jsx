@@ -3,7 +3,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/system/Unstable_Grid';
-import img from './img.png'
+import img from './img/img.png';
 function Home() {
   return (
     <>

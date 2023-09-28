@@ -82,7 +82,6 @@ function VoiceRecognition() {
   const startListening = () => {
     const recognition = new window.SpeechRecognition();
     recognition.lang = 'en-US';
-
     recognition.onstart = () => {
       setListening(true);
       setTranscript('');
